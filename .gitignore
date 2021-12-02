@@ -1,0 +1,22 @@
+#Version Control
+GitAutomation/
+
+# VTProE Only Ignore extensions and folders
+
+#Extensions. Basically the only file allowed is the *.VTP
+*.ASV
+*.vtz
+#*.vta track it since it may contain graphic template
+*.sgd
+*.hash
+*.ced
+*.sgd_
+*.sgd2
+*.zip
+*.c3prjz
+
+# XPanel / Air
+*.xexe/
+*.xweb/
+*.prj/
+*.c3prj/
