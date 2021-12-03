@@ -1,0 +1,47 @@
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+
+#Crestron_SimplSharp_Library "SimplPlusPythonAdapter"
+
+Digital_Input test, Send_Data_Test;
+String_Input Send_String[65534];
+//String_Input Path[65534];
+  string g_ID[65534];
+
+
+PythonModule pModule;
+
+function main()
+{
+  g_ID = PythonAdapterUtils.NewGuid;
+	RegisterDelegate(PythonInterface, DataReceived, DataReceivedHandler);
+
+}
+
+Change Send_String
+
+{
+  
+   	 pModule.SendData(Send_String);
+
+
+}
+
+
+push Send_Data_Test
+
+{
+   	 pModule.SendData( "{\"splus\":\"This data sent from S+ Run_\"}" );
+}
+
+push test
+{
+	PythonInterface.Run(g_ID, "/user/simpltest.py", pModule);
+}
+
+
+callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataReceivedEventArgs e)
+{ 
+} 
+
