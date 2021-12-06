@@ -19,6 +19,60 @@ function main()
 
 }
 
+
+function Run_(integer mode)
+{
+	StringList args;
+	string data[STRING_SIZE];
+	integer result;
+
+
+	data = "{\"splus\":\"This data sent from S+ Run_\"}";
+
+	// Utility provided to generate GUIDs
+	g_ID = PythonAdapterUtils.NewGuid;
+
+	// Any arguments must be passed in StringList
+	args.Add(ARG1);
+	args.Add(ARG2);
+	//args.Add(ARG3);
+
+
+	switch (mode)
+	{
+		case (RUN_BASIC):
+		{
+			// Must pass reference to existing PythonModule object
+			// Path can absolute or relative to program directory
+			//PythonModule pModule;
+			result = PythonInterface.Run(g_ID, "/user/simpltest.py", pModule);
+		}
+		case (RUN_ARGS):
+		{
+			// Overload to pass arguments
+			result = PythonInterface.RunWithArgs(g_ID, "/user/simpltest.py", g_PythonModule[mode], args);
+		}
+	}
+
+	g_LastRunMode = mode;
+
+	if (result = SUCCESS)
+	{               
+		PrintModule("Run_", g_PythonModule[mode]);          
+
+		// Data can be sent using either instance or static calls
+		pModule.SendData(data);
+
+		PythonInterface.SendData(g_ID, data);
+
+	}
+	else
+	{
+		print("FAIL: Run() returned %ld\r\n", result);
+	}
+}
+
+
 Change Send_String
 
 {

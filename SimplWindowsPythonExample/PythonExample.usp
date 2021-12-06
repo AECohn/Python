@@ -42,7 +42,7 @@ integer g_ExpectedArgCount[RUN_ARGS];
 //
 // Prints PythonModule object information
 //
-function PrintModule(string header, PythonModule module)
+/*function PrintModule(string header, PythonModule module)
 {
 	integer i;
 	integer count;
@@ -63,7 +63,7 @@ function PrintModule(string header, PythonModule module)
 	print("%s File = %s\r\n", header, module.File);
 	print("%s State = %s\r\n", header, module.State);
 	print("%s StateInformation = %s\r\n", header, module.StateInformation);	
-}
+}*/
 
 /* Functions */
                              
@@ -73,14 +73,14 @@ function PrintModule(string header, PythonModule module)
 callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataReceivedEventArgs e)
 {
 	string s[STRING_SIZE];
-	s = "{\"splus\":\"This data sent from S+ DataReceivedHandler\"}";
+	//s = "{\"splus\":\"This data sent from S+ DataReceivedHandler\"}";
 
-	PrintModule("DataReceivedHandler:", sender);
+	//PrintModule("DataReceivedHandler:", sender);
 
-	print("e.Data = %s\r\n", e.Data);
+	print("%s\r\n", e.Data);
                        
 	// Can use module instance to pass back data
-	sender.SendData(s);
+	//sender.SendData(s);
 }
 
 //
@@ -92,7 +92,7 @@ function Run_(integer mode)
 	string data[STRING_SIZE];
 	integer result;
 
-	data = "{\"splus\":\"This data sent from S+ Run_\"}";
+	//data = "{\"splus\":\"This data sent from S+ Run_\"}";
 
 	// Utility provided to generate GUIDs
 	g_ID = PythonAdapterUtils.NewGuid;
@@ -101,27 +101,16 @@ function Run_(integer mode)
 	args.Add(ARG1);
 	args.Add(ARG2);
 
-	switch (mode)
-	{
-		case (RUN_BASIC):
-		{
-			// Must pass reference to existing PythonModule object
-			// Path can absolute or relative to program directory
-			//PythonModule pModule;
-			result = PythonInterface.Run(g_ID, "/user/simpltest.py", pModule);
-		}
-		case (RUN_ARGS):
-		{
 			// Overload to pass arguments
 			result = PythonInterface.RunWithArgs(g_ID, "/user/simpltest.py", g_PythonModule[mode], args);
-		}
-	}
+		
+	
 
 	g_LastRunMode = mode;
 
-	if (result = SUCCESS)
+	/*if (result = SUCCESS)
 	{               
-		PrintModule("Run_", g_PythonModule[mode]);          
+		//PrintModule("Run_", g_PythonModule[mode]);          
 
 		// Data can be sent using either instance or static calls
 		pModule.SendData(data);
@@ -132,7 +121,7 @@ function Run_(integer mode)
 	else
 	{
 		print("FAIL: Run() returned %ld\r\n", result);
-	}
+	}*/
 }
 
 //
@@ -145,7 +134,7 @@ function ModuleTest(PythonModule module)
 	g_ExpectedArgCount[RUN_BASIC] = 0;
 	g_ExpectedArgCount[RUN_ARGS] = 2;
 
-	PrintModule("ModuleTest", module);
+	//PrintModule("ModuleTest", module);
 
 	// Check expected arg count
 	if (g_ExpectedArgCount[g_LastRunMode] = module.ArgumentCount) { print("PASS: module.ArgumentCount=%lu\r\n", module.ArgumentCount); }
