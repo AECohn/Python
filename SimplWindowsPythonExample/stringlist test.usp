@@ -1,0 +1,26 @@
+
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+
+
+Digital_Input Hmm;
+
+
+Push Hmm
+{              	
+
+
+
+
+}
+
+
+function Run_()
+{
+	StringList args;
+
+	args.Add("1");
+	args.Add("2");
+
+
