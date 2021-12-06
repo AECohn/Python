@@ -22,7 +22,7 @@
   Code=1
   SysRev5=3.090
   SMWRev=3.00.00
-  InputCue1=RunWithArgs
+  InputCue1=Divide
   InputSigType1=Digital
   InputList2Cue1=Values[#]
   InputList2SigType1=Serial

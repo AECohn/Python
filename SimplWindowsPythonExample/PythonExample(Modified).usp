@@ -3,42 +3,22 @@
                                         
 #CRESTRON_SIMPLSHARP_LIBRARY "SimplPlusPythonAdapter"
 
-#DEFINE_CONSTANT	TRUE						1
-#DEFINE_CONSTANT	FALSE						0
-
-#DEFINE_CONSTANT	SUCCESS						0
-#DEFINE_CONSTANT	FAILURE						-1
-
-#DEFINE_CONSTANT	STRING_SIZE					250
-                                                         
-#DEFINE_CONSTANT	PATH						"/user/simpltest.py"
-//#DEFINE_CONSTANT	ARG1						"Aviv"
-//#DEFINE_CONSTANT	ARG2						"Test"
-#DEFINE_CONSTANT	RUN_ARGS					1
-
-digital_input RunWithArgs;
-
-//digital_output Supported;
+digital_input Divide;
 String_Input Values[2][256];
 String_Output From_Python;
 
-PythonModule g_PythonModule[RUN_ARGS];
+PythonModule g_PythonModule;
 
-string g_ID[STRING_SIZE];
-integer g_ExpectedArgCount[RUN_ARGS];
-
+string g_ID[250];
 
 
 callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataReceivedEventArgs e)
 {
-	string s[STRING_SIZE];
-	print("%s\r\n", e.Data);
-                       
-
-From_Python = e.Data;
+	From_Python = e.Data;
 }
 
-function Run_(integer mode)
+
+push Divide
 {
 	integer i;
 	StringList args;
@@ -50,19 +30,8 @@ function Run_(integer mode)
          args.Add(Values[i]);
 		}
 
-	//args.Add(ARG1);
-	//args.Add(ARG2);
-
 			// Overload to pass arguments
-			PythonInterface.RunWithArgs(g_ID, "/user/simpltest.py", g_PythonModule[mode], args);
-}
-
-//
-
-
-push RunWithArgs
-{
-	Run_(RUN_ARGS);
+			PythonInterface.RunWithArgs(g_ID, "/user/simpltest.py", g_PythonModule, args);
 }
 
 
@@ -74,7 +43,6 @@ function RegisterDelegates()
 
 function Main()
 {
-	//Supported = PythonInterface.Supported;
 	RegisterDelegates();
 	WaitForInitializationComplete();
 }
