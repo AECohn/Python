@@ -3,27 +3,36 @@
                                         
 #CRESTRON_SIMPLSHARP_LIBRARY "SimplPlusPythonAdapter"
 
-digital_input Divide;
+digital_input Divide, test;
 String_Input Values[2][256];
-String_Output From_Python;
+String_Output Result;
 
-PythonModule g_PythonModule;
+string guid[250];
 
-string g_ID[250];
+PythonModule TestModule;
 
-
-callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataReceivedEventArgs e)
+callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataReceivedEventArgs FromPython)
 {
-	From_Python = e.Data;
+	Result = FromPython.Data;
 }
 
+
+
+push test
+
+{
+string s[256];
+ 
+	s = "Hello, World";
+                       
+	PythonInterface.SendData(guid, s);
+
+}
 
 push Divide
 {
 	integer i;
 	StringList args;
-
-	g_ID = PythonAdapterUtils.NewGuid;
 
 	for(i = 1 to 2)
 		{
@@ -31,7 +40,7 @@ push Divide
 		}
 
 			// Overload to pass arguments
-			PythonInterface.RunWithArgs(g_ID, "/user/simpltest.py", g_PythonModule, args);
+			PythonInterface.RunWithArgs(guid, "/user/simpltest.py", TestModule, args);
 }
 
 
@@ -43,6 +52,7 @@ function RegisterDelegates()
 
 function Main()
 {
+	guid = PythonAdapterUtils.NewGuid;
 	RegisterDelegates();
 	WaitForInitializationComplete();
 }
