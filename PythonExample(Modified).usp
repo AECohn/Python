@@ -1,5 +1,5 @@
 //#CATEGORY "0"
-#ENABLE_TRACE
+//#ENABLE_TRACE
                                         
 #CRESTRON_SIMPLSHARP_LIBRARY "SimplPlusPythonAdapter"
 
@@ -23,7 +23,6 @@ function SendToPython (string Mode)
          	integer i;
 	StringList args;
 
-	g_ID = PythonAdapterUtils.NewGuid;
 
 args.Add(Mode);
 
@@ -37,6 +36,7 @@ args.Add(Mode);
 
 
 	}
+
 
 
 push Divide
@@ -75,6 +75,8 @@ function RegisterDelegates()
 
 function Main()
 {
+        	g_ID = PythonAdapterUtils.NewGuid;
+
 	RegisterDelegates();
 	WaitForInitializationComplete();
 }
