@@ -6,6 +6,7 @@
 digital_input Divide;
 String_Input Values[2][256];
 String_Output From_Python;
+string Mode[64];
 
 PythonModule g_PythonModule;
 
@@ -25,13 +26,17 @@ push Divide
 
 	g_ID = PythonAdapterUtils.NewGuid;
 
+	Mode = "Divide";
+
+args.Add(Mode);
+
 	for(i = 1 to 2)
 		{
          args.Add(Values[i]);
 		}
 
 			// Overload to pass arguments
-			PythonInterface.RunWithArgs(g_ID, "/user/simpltest.py", g_PythonModule, args);
+			PythonInterface.RunWithArgs(g_ID, "/user/PythonCalc.py", g_PythonModule, args);
 }
 
 
