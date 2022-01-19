@@ -8,7 +8,7 @@ String_Input Values[2][256];
 String_Output From_Python;
 string Mode[64];
 
-PythonModule g_PythonModule;
+PythonModule PythonCalc;
 
 string g_ID[250];
 
@@ -32,7 +32,7 @@ args.Add(Mode);
 		}
 
 			// Overload to pass arguments
-			PythonInterface.RunWithArgs(g_ID, "/user/PythonCalc.py", g_PythonModule, args);
+			PythonInterface.RunWithArgs(g_ID, "/user/PythonCalc.py", PythonCalc, args);
 
 
 	}
