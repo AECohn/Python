@@ -3,7 +3,7 @@
                                         
 #CRESTRON_SIMPLSHARP_LIBRARY "SimplPlusPythonAdapter"
 
-digital_input Divide, Multiply, Add, Subtract;
+digital_input Divide, Multiply, Add, Subtract, Power;
 String_Input Values[2][256];
 String_Output From_Python;
 string Mode[64];
@@ -62,6 +62,13 @@ push Subtract
 
 {
      SendToPython("Subtract");
+
+
+}
+
+push Power
+{
+          SendToPython("Power");
 
 
 }

@@ -30,13 +30,15 @@
   InputSigType3=Digital
   InputCue4=Subtract
   InputSigType4=Digital
+  InputCue5=Power
+  InputSigType5=Digital
   InputList2Cue1=Values[#]
   InputList2SigType1=Serial
   OutputList2Cue1=From_Python
   OutputList2SigType1=Serial
   ParamCue1=[Reference Name]
-  MinVariableInputs=4
-  MaxVariableInputs=4
+  MinVariableInputs=5
+  MaxVariableInputs=5
   MinVariableInputsList2=1
   MaxVariableInputsList2=2
   MinVariableOutputs=0
