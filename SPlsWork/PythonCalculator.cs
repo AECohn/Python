@@ -12,9 +12,9 @@ using Crestron.SimplPlus.Utilities;
 using Crestron.SimplSharp.Python.SimplPlusAdapter;
 using Crestron.SimplSharp.Python;
 
-namespace UserModule_PYTHONEXAMPLE_MODIFIED_
+namespace UserModule_PYTHONCALCULATOR
 {
-    public class UserModuleClass_PYTHONEXAMPLE_MODIFIED_ : SplusObject
+    public class UserModuleClass_PYTHONCALCULATOR : SplusObject
     {
         static CCriticalSection g_criticalSection = new CCriticalSection();
         Crestron.Logos.SplusObjects.DigitalInput DIVIDE;
@@ -222,7 +222,7 @@ public override void LogosSimplSharpInitialize()
     
 }
 
-public UserModuleClass_PYTHONEXAMPLE_MODIFIED_ ( string InstanceName, string ReferenceID, Crestron.Logos.SplusObjects.CrestronStringEncoding nEncodingType ) : base( InstanceName, ReferenceID, nEncodingType ) {}
+public UserModuleClass_PYTHONCALCULATOR ( string InstanceName, string ReferenceID, Crestron.Logos.SplusObjects.CrestronStringEncoding nEncodingType ) : base( InstanceName, ReferenceID, nEncodingType ) {}
 
 
 
