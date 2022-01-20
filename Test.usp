@@ -1,0 +1,40 @@
+//#CATEGORY "0"
+//#ENABLE_TRACE
+                                        
+#CRESTRON_SIMPLSHARP_LIBRARY "SimplPlusPythonAdapter"
+
+Digital_Input Run;
+String_Output  From_Python;
+   string g_ID[65534];
+
+
+PythonModule pModule;
+
+Push Run
+{
+Integer Success;
+Success = PythonInterface.Run(g_ID, "/user/pythonscript.py", pModule);
+If(Success = 0) 
+{ 
+   pModule.SendData( "{\"splus\":\"This data sent from S+ Run_\"}" );
+} 
+}
+ 
+
+
+function main()
+{
+
+g_ID = PythonAdapterUtils.NewGuid;
+	RegisterDelegate(PythonInterface, DataReceived, DataReceivedHandler);
+
+
+ 
+
+}
+
+callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataReceivedEventArgs e)
+{
+	From_Python = e.Data;
+}
+
