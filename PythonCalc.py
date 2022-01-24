@@ -15,7 +15,7 @@ def multiply (values):
     return float(values[1]) * float(values[2])
 
 def power (values):
-    return math.pow(float(values[1], float(values[2])))
+    return math.pow(float(values[1]), float(values[2]))
 
 def crestron_main(module_info_object):
 
@@ -39,7 +39,7 @@ def crestron_main(module_info_object):
 
     answer = str(result)
     if answer.endswith('.0'):
-        answer = answer.replace('.0', 'hmm')
+        answer = answer.replace('.0', '')
 
     module_info_object.set(answer)
    
