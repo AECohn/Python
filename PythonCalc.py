@@ -1,23 +1,38 @@
+
+
 import math
 
+def add (values):
+    return float(values[1]) + float(values[2])
+
+def subtract (values):
+    return float(values[1]) - float(values[2])
+
+def divide (values):
+    return float(values[1]) / float(values[2])
+
+def multiply (values):
+    return float(values[1]) * float(values[2])
+
+def power (values):
+    return math.pow(float(values[1], float(values[2])))
 
 def crestron_main(module_info_object):
-    result = ''
 
     if module_info_object.args[0] == 'Divide':
-        result = float(module_info_object.args[1])/float(module_info_object.args[2])
+        result = divide(module_info_object.args)
 
     elif module_info_object.args[0] == 'Multiply':
-        result = float(module_info_object.args[1]) * float(module_info_object.args[2])
+        result = multiply(module_info_object.args)
 
     elif module_info_object.args[0] == 'Add':
-        result = float(module_info_object.args[1]) + float(module_info_object.args[2])
+        result = add(module_info_object.args)
 
     elif module_info_object.args[0] == 'Subtract':
-        result = float(module_info_object.args[1]) - float(module_info_object.args[2])
+        result = subtract(module_info_object.args)
 
     elif module_info_object.args[0] == 'Power':
-        result = math.pow(float(module_info_object.args[1]), float(module_info_object.args[2]))
+        result = power(module_info_object.args)
 
     else:
         module_info_object.set(str('Command not found'))
@@ -27,3 +42,4 @@ def crestron_main(module_info_object):
         answer = answer.replace('.0', 'hmm')
 
     module_info_object.set(answer)
+   
