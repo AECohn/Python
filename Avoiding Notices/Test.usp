@@ -3,7 +3,8 @@
                                         
 #CRESTRON_SIMPLSHARP_LIBRARY "SimplPlusPythonAdapter"
 
-Digital_Input Run, Start;
+Digital_Input Run, Run2, Start;
+string_input Message[256];
 String_Output  From_Python;
    string g_ID[65534];
 Integer Success;
@@ -15,14 +16,22 @@ Push Run
 {
 If(Success = 0) 
 { 
-   pModule.SendData( "{\"splus\":\"This data sent from S+ Run_\"}" );
+   //pModule.SendData( "{\"splus\":\"This data sent from S+ Run_\"}" );
+	pmodule.SendData(Message);
 } 
 }
+
+push Run2
+	{                                             
+         pModule.SendData("{\"type\":\"Add\",\"value1\":\"10\",\"value2\":\"30\"}");
+
+
+	}
 
 Push Start
 {
 
-   Success = PythonInterface.Run(g_ID, "/user/pythonscript.py", pModule);
+   Success = PythonInterface.Run(g_ID, "/user/pythoncalc2.py", pModule);
 
 }
  

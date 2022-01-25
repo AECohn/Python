@@ -3,10 +3,11 @@ import time
 import json
 
 
-def data_received_callback(jonah):
-    print("PYTHON: Printing from simpltest.py subscribe() callback: " + jonah)
-    jsstring = json.loads(jonah)
-    print(jsstring)
+def data_received_callback(twentytwentyone):
+    print("PYTHON: Printing from simpltest.py subscribe() callback: " + twentytwentyone)
+    jsstring = json.loads(twentytwentyone)
+    if twentytwentyone["type"] == "add":
+        print("yay, it was add")
 
 
 def crestron_main(module_info_object):
