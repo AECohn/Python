@@ -32,9 +32,7 @@ args.Add(Mode);
 		}
 
 			// Overload to pass arguments
-			PythonInterface.RunWithArgs(g_ID, "/user/PythonCalc.py", PythonCalc, args);
-
-
+			PythonInterface.RunWithArgs(g_ID, "PythonCalc.py", PythonCalc, args);
 	}
 
 

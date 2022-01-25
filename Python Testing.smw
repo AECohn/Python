@@ -18,7 +18,7 @@ S0Nd=1
 S1Nd=2
 SLNd=3
 PrNm=Python Testing.smw
-DbVr=210.00.003.00
+DbVr=210.05.001.00
 DvcDbVr=200.140.001.00
 PgmNm=AC
 DlrNm=DGI
@@ -1188,7 +1188,7 @@ Ym=-1
 SH=20
 Z=100
 Ht=1
-Hi=6
+Hi=7
 ]
 [
 ObjTp=Sm
@@ -1487,20 +1487,21 @@ tO=17
 ObjTp=Sm
 H=20
 SmC=103
-Nm=PythonCalculator.usp
+Nm=pythoncalculator.usp
 ObjVer=1
 PrH=4
 CF=2
 n1I=5
-n2I=2
-mI=7
+n2I=3
+mI=8
 I1=11
 I2=5
 I3=6
 I4=7
 I5=4
-I6=8
-I7=9
+I6=12
+I7=8
+I8=9
 mO=1
 tO=1
 O1=10
@@ -1549,4 +1550,10 @@ SgTp=4
 ObjTp=Sg
 H=11
 Nm=Divide
+]
+[
+ObjTp=Sg
+H=12
+Nm=Location
+SgTp=4
 ]
