@@ -1,21 +1,35 @@
 
-
 import math
 
 def add (values):
-    return float(values[1]) + float(values[2])
+    try:
+        return float(values[1]) + float(values[2])
+    except Exception as err:
+        return err
 
 def subtract (values):
-    return float(values[1]) - float(values[2])
+    try:
+        return float(values[1]) - float(values[2])
+    except Exception as err:
+        return err
 
 def divide (values):
-    return float(values[1]) / float(values[2])
+    try:
+        return float(values[1]) / float(values[2])
+    except Exception as err:
+        return err
 
 def multiply (values):
-    return float(values[1]) * float(values[2])
+    try:
+        return float(values[1]) * float(values[2])
+    except Exception as err:
+        return err
 
 def power (values):
-    return math.pow(float(values[1]), float(values[2]))
+    try:
+        return math.pow(float(values[1]), float(values[2]))
+    except Exception as err:
+        return err
 
 def crestron_main(module_info_object):
 
@@ -42,4 +56,3 @@ def crestron_main(module_info_object):
         answer = answer.replace('.0', '')
 
     module_info_object.set(answer)
-   
