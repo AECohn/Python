@@ -20,19 +20,18 @@ callback function DataReceivedHandler(PythonModule sender, PythonAdapterDataRece
 
 function SendToPython (string Mode)
 	{
-         	integer i;
+    integer i;
+
 	StringList args;
 
-
-args.Add(Mode);
+	args.Add(Mode);
 
 	for(i = 1 to 2)
-		{
          args.Add(Values[i]);
-		}
+		
 
-			// Overload to pass arguments
-			PythonInterface.RunWithArgs(g_ID, "PythonCalc.py", PythonCalc, args);
+	// Overload to pass arguments
+	PythonInterface.RunWithArgs(g_ID, "PythonCalc.py", PythonCalc, args);
 	}
 
 
@@ -44,31 +43,23 @@ SendToPython("Divide");
 
 push Multiply
 {
-   
 	SendToPython("Multiply");
-
 }
 
 push Add
 {
-
    SendToPython("Add");
-
 }
 
 push Subtract
 
 {
      SendToPython("Subtract");
-
-
 }
 
 push Power
 {
-          SendToPython("Power");
-
-
+     SendToPython("Power");
 }
 
 
@@ -80,7 +71,7 @@ function RegisterDelegates()
 
 function Main()
 {
-        	g_ID = PythonAdapterUtils.NewGuid;
+    g_ID = PythonAdapterUtils.NewGuid;
 
 	RegisterDelegates();
 	WaitForInitializationComplete();
